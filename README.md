@@ -95,17 +95,17 @@ go run consignment-cli/cli.go
 
 
 
-![consul](/home/mu-mo/桌面/Go/src/github.com/yun-mu/MicroServicePractice/dist/consul.png)
+![consul](dist/consul.png)
 
 
 
-![jaeger](/home/mu-mo/桌面/Go/src/github.com/yun-mu/MicroServicePractice/dist/jaeger.png)
+![jaeger](dist/jaeger.png)
 
 
 
-![mongo2](/home/mu-mo/桌面/Go/src/github.com/yun-mu/MicroServicePractice/dist/mongo2.png)
+![mongo2](dist/mongo2.png)
 
-![mongo1](/home/mu-mo/桌面/Go/src/github.com/yun-mu/MicroServicePractice/dist/mongo1.png)
+![mongo1](dist/mongo1.png)
 
 ## 开发详解
 
