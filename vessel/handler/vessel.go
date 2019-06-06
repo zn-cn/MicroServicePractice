@@ -92,7 +92,7 @@ func (h *Handler) pubLog(userID, method, msg string) error {
 	}
 
 	if err := h.Broker.Publish(topic, data); err != nil {
-		log.Fatalf("[pub] failed: %v\n", err)
+		log.Printf("[pub] failed: %v\n", err)
 	}
 	return nil
 }

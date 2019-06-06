@@ -60,7 +60,7 @@ func (h *Handler) Create(ctx context.Context, req *pb.User, resp *pb.Response) e
 	repo := h.GetRepo()
 	defer repo.Close()
 	if err := repo.Create(req); err != nil {
-		return nil
+		return err
 	}
 	resp.User = req
 

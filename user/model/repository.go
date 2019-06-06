@@ -51,7 +51,7 @@ func (repo *UserRepository) Get(id string) (*pb.User, error) {
 func (repo *UserRepository) GetAll() ([]*pb.User, error) {
 	users := []*dao.User{}
 
-	err := dao.FindAll(repo.collection(), nil, &users)
+	err := dao.FindAll(repo.collection(), bson.M{}, &users)
 	if err != nil {
 		return nil, err
 	}

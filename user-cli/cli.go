@@ -2,7 +2,6 @@ package main
 
 import (
 	"log"
-	"os"
 
 	"github.com/yun-mu/MicroServicePractice/common"
 	"github.com/yun-mu/MicroServicePractice/config"
@@ -40,16 +39,18 @@ func main() {
 		Company:  company,
 	})
 	if err != nil {
-		log.Fatalf("call Create error: %v", err)
+		log.Printf("call Create error: %v", err)
+	} else {
+		log.Println("created: ", resp.User.Id)
 	}
-	log.Println("created: ", resp.User.Id)
 
 	allResp, err := client.GetAll(context.Background(), &pb.Request{})
 	if err != nil {
-		log.Fatalf("call GetAll error: %v", err)
-	}
-	for i, u := range allResp.Users {
-		log.Printf("user_%d: %v\n", i, u)
+		log.Printf("call GetAll error: %v", err)
+	} else {
+		for i, u := range allResp.Users {
+			log.Printf("user_%d: %v\n", i, u)
+		}
 	}
 
 	authResp, err := client.Auth(context.Background(), &pb.User{
@@ -57,9 +58,8 @@ func main() {
 		Password: password,
 	})
 	if err != nil {
-		log.Fatalf("auth failed: %v", err)
+		log.Printf("auth failed: %v\n", err)
+	} else {
+		log.Println("token: ", authResp.Token)
 	}
-	log.Println("token: ", authResp.Token)
-
-	os.Exit(0)
 }

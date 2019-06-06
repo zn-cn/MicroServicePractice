@@ -60,7 +60,8 @@ func (h *Handler) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 		Capacity:  int32(len(req.Containers)),
 		MaxWeight: req.Weight,
 	}
-	vResp, err := h.vesselClient.FindAvailable(context.Background(), vReq)
+
+	vResp, err := h.vesselClient.FindAvailable(ctx, vReq)
 	if err != nil {
 		return err
 	}
@@ -124,7 +125,7 @@ func (h *Handler) pubLog(userID, method, msg string) error {
 	}
 
 	if err := h.Broker.Publish(topic, data); err != nil {
-		log.Fatalf("[pub] failed: %v\n", err)
+		log.Printf("[pub] failed: %v\n", err)
 	}
 	return nil
 }

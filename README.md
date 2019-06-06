@@ -53,12 +53,6 @@ ratelimit: uber/ratelimit, 限流
 
 ![未命名文件](dist/kafka.png)
 
-微服务开发流程：
-
-![image-20180512044329199](https://images.yinzige.com/2018-05-11-204329.png)
-
-
-
 ### demo 运行
 
 前提工具：`go, dep, docker, docker-compose, mongo`
@@ -69,7 +63,7 @@ ratelimit: uber/ratelimit, 限流
 
 注：建议自己开多个终端 `go run` ，这样可以看日志
 
-```
+```shell
 make run
 ```
 
@@ -77,7 +71,7 @@ make run
 
 注：注意顺序，刚开始啥数据都没有的
 
-```
+```shell
 go run user-cli/cli.go
 export Token=$Token # 注意换成前面生成的Token
 go run vessel-cli/cli.go
@@ -86,17 +80,41 @@ go run consignment-cli/cli.go
 
 ## 开发详解
 
-学习代码：
+### proto 代码生成
 
-https://github.com/hb-go/micro
+安装工具：
 
-https://github.com/Allenxuxu/microservices
+*protoc* 安装：http://google.github.io/proto-lens/installing-protoc.html
 
-https://github.com/wuYin/shippy
+*protoc-gen-go* 和 *protoc-gen-micro*
 
-https://github.com/micro/examples
+```shell
+go get -u -v google.golang.org/grpc				
+go get -u -v github.com/golang/protobuf/protoc-gen-go
+go get -u -v github.com/micro/protoc-gen-micro
+```
+
+生成的脚本我已经写好 *Makefile*, 进入 *interface-center* 目录，执行`make build` 即可
+
+内部示例如下：
+
+```shell
+protoc --proto_path=proto:. --go_out=plugins=micro:out/ proto/vessel/vessel.proto
+```
+
+### 微服务开发流程
+
+如果使用 *grpc* 作为 *server* 和 *client*，开发流程如下：
+
+注：*server* 和 *client* 必须相同，如：我的代码中 *server* 和 *client* 使用的都是 *rpc*, *transport* 是 *tcp* 
+
+![image-20180512044329199](https://images.yinzige.com/2018-05-11-204329.png)
+
+
 
 ## go-micro 详解
+
+*micro* 文档：https://micro.mu/docs/index.html
 
 参见另一篇 [go-micro详解](https://github.com/yun-mu/MicroServicePractice/blob/master/go-micro%E8%AF%A6%E8%A7%A3.md)
 
