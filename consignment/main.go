@@ -24,6 +24,8 @@ func main() {
 	// 创建于 MongoDB 的主会话，需在退出 main() 时候手动释放连接
 	defer session.Close()
 
+	// 直接调用自己写的公有的库获取 server，保持配置同步
+	// common.AuthWrapper 为前置认证，采用JWT
 	srv := common.GetMicroServer(service, micro.WrapHandler(common.AuthWrapper))
 
 	// 作为 vessel-service 的客户端

@@ -56,7 +56,7 @@ func init() {
 }
 
 func GetMicroClient(service string, exOpts ...micro.Option) micro.Service {
-	opts := getOpts(service, exOpts...)
+	opts := getOpts(service)
 	if defaultClient != nil {
 		opts = append(opts, defaultClient)
 	}
@@ -66,13 +66,15 @@ func GetMicroClient(service string, exOpts ...micro.Option) micro.Service {
 	}
 	opts = append(opts, micro.WrapClient(hystrix.NewClientWrapper(), opentracing.NewClientWrapper(t), ratelimit.NewClientWrapper(1024)))
 	srv := micro.NewService(opts...)
+
+	opts = append(opts, exOpts...)
 	// 解析命令行参数
 	srv.Init()
 	return srv
 }
 
 func GetMicroServer(service string, exOpts ...micro.Option) micro.Service {
-	opts := getOpts(service, exOpts...)
+	opts := getOpts(service)
 	if defaultServer != nil {
 		opts = append(opts, defaultServer)
 	}
@@ -87,14 +89,18 @@ func GetMicroServer(service string, exOpts ...micro.Option) micro.Service {
 		log.Fatalf("opentracing tracer create error:%v", err)
 	}
 	opts = append(opts, micro.Broker(brokerKafka), micro.WrapHandler(opentracing.NewHandlerWrapper(t), ratelimit.NewHandlerWrapper(1024)))
+
+	// 注意顺序，同样的配置后面的会将前面的覆盖
+	opts = append(opts, exOpts...)
+
 	srv := micro.NewService(opts...)
-	// 解析命令行参数
+	// 初始化，解析命令行参数
 	srv.Init()
 	return srv
 }
 
-func getOpts(service string, exOpts ...micro.Option) []micro.Option {
-	opts := append(exOpts,
+func getOpts(service string) []micro.Option {
+	opts := append([]micro.Option{},
 		defaultOpts...,
 	)
 	version := config.GetVersion(service)
@@ -105,6 +111,7 @@ func getOpts(service string, exOpts ...micro.Option) []micro.Option {
 	serviceName := config.GetServiceName(service)
 	opts = append(opts, micro.Version(version), micro.Name(serviceName))
 	if os.Getenv("DebugMDNS") == "" {
+		// 开发者可使用 micro 工具箱进行 debug, micro 默认使用的 mdns 模式
 		opts = append(opts, micro.Registry(consul.NewRegistry(func(op *registry.Options) {
 			op.Addrs = config.GetRegistryAddrs(service)
 		})))
@@ -123,6 +130,7 @@ func GetMicroWeb(service string, exOpts ...web.Option) web.Service {
 	serviceName := config.GetServiceName(service)
 	opts = append(opts, web.Version(version), web.Name(serviceName))
 	if os.Getenv("DebugMDNS") == "" {
+		// 开发者可使用 micro 工具箱进行 debug, micro 默认使用的 mdns 模式
 		opts = append(opts, web.Registry(consul.NewRegistry(func(op *registry.Options) {
 			op.Addrs = config.GetRegistryAddrs(service)
 		})))

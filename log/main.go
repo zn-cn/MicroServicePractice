@@ -26,6 +26,7 @@ func main() {
 	srv := common.GetMicroServer(service)
 
 	bk := srv.Server().Options().Broker
+	// 这里订阅了 一个 topic, 并提供接口处理
 	_, err := bk.Subscribe(topic, subLog)
 	if err != nil {
 		log.Fatalf("sub error: %v\n", err)

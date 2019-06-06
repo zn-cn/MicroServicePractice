@@ -3,7 +3,7 @@ package common
 
 import (
 	"io"
-    "time"
+	"time"
 
 	"github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-lib/metrics"
@@ -21,8 +21,8 @@ func NewJaegerTracer(serviceName, addr string) (opentracing.Tracer, io.Closer, e
 			Param: 1,
 		},
 		Reporter: &jaegercfg.ReporterConfig{
-            LogSpans: true,
-            BufferFlushInterval: 1 * time.Second,
+			LogSpans: true,
+			BufferFlushInterval: 1 * time.Second,
 		},
 	}
 

@@ -54,6 +54,8 @@ func AuthWrapper(fn server.HandlerFunc) server.HandlerFunc {
 			return err
 		}
 
+
+		// 这里将 JWT 解析出来的 user_id 传递下去
 		ctx = context.WithValue(ctx, "user_id", authResp.UserId)
 		err = fn(ctx, req, resp)
 		return err

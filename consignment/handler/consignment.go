@@ -10,6 +10,7 @@ import (
 	"github.com/micro/go-micro/broker"
 	"gopkg.in/mgo.v2"
 
+	"github.com/yun-mu/MicroServicePractice/common"
 	logPB "github.com/yun-mu/MicroServicePractice/interface-center/out/log"
 
 	"github.com/yun-mu/MicroServicePractice/config"
@@ -28,14 +29,20 @@ type Handler struct {
 	Broker       broker.Broker
 }
 
+const service = "consignment"
 var (
 	topic       string
 	serviceName string
+    version string
 )
 
 func init() {
 	topic = config.GetBrokerTopic("log")
-	serviceName = config.GetServiceName("consignment")
+	serviceName = config.GetServiceName(service)
+	version = config.GetVersion(service)
+	if version == "" {
+		version = "latest"
+	}
 }
 
 func GetHandler(session *mgo.Session, vesselClient vesselPb.VesselServiceClient, userClient userPb.UserServiceClient, bk broker.Broker) *Handler {
@@ -61,7 +68,7 @@ func (h *Handler) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 		MaxWeight: req.Weight,
 	}
 
-	vResp, err := h.vesselClient.FindAvailable(ctx, vReq)
+	vResp, err := h.vesselClient.FindAvailable(ctx, vReq, common.Filter(version))
 	if err != nil {
 		return err
 	}
@@ -75,6 +82,7 @@ func (h *Handler) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 	resp.Created = true
 	resp.Consignment = req
 
+	// 后置操作
 	go func() {
 		userID := ""
 		if id, ok := ctx.Value("user_id").(string); ok {
