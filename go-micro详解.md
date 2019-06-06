@@ -1,5 +1,13 @@
 # go-micro 详解
 
+记录来自：
+
+- [整体架构介绍](https://juejin.im/post/5c74aa67e51d4518b656f912)
+- [入门例子](https://juejin.im/post/5c74adff6fb9a049e93d6154)
+- [Registry服务的注册和发现](https://juejin.im/post/5c74af39f265da2dd8689e36)
+- [rpc方法调用过程详解](https://juejin.im/post/5c74af7cf265da2dc45384eb)
+- [stream 调用过程详解](https://juejin.im/post/5c85f95ef265da2dae515927)
+
 ## 整体架构介绍
 
 ### 通信流程
