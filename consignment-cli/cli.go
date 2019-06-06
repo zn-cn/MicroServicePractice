@@ -12,9 +12,9 @@ import (
 
 	"github.com/micro/go-micro/metadata"
 
-	"Ethan/MicroServicePractice/common"
-	"Ethan/MicroServicePractice/config"
-	pb "Ethan/MicroServicePractice/interface-center/out/consignment"
+	"github.com/yun-mu/MicroServicePractice/common"
+	"github.com/yun-mu/MicroServicePractice/config"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/consignment"
 )
 
 const (
@@ -32,7 +32,7 @@ func init() {
 	prefixPath = os.Getenv("PrefixPath")
 	if prefixPath == "" {
 		gopath := os.Getenv("GOPATH")
-		prefixPath = gopath + "/src/Ethan/MicroServicePractice/"
+		prefixPath = gopath + "/src/github.com/yun-mu/MicroServicePractice"
 	}
 	token = os.Getenv("Token")
 	serviceName = config.GetServiceName(service)

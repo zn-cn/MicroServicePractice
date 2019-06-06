@@ -86,9 +86,17 @@ go run consignment-cli/cli.go
 
 ## 开发详解
 
+学习代码：
 
+https://github.com/hb-go/micro
+
+https://github.com/Allenxuxu/microservices
+
+https://github.com/wuYin/shippy
+
+https://github.com/micro/examples
 
 ## go-micro 详解
 
-
+参见另一篇 [go-micro详解](https://github.com/yun-mu/MicroServicePractice/blob/master/go-micro%E8%AF%A6%E8%A7%A3.md)
 

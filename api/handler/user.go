@@ -1,7 +1,7 @@
 package handler
 
 import (
-	userPb "Ethan/MicroServicePractice/interface-center/out/user"
+	userPb "github.com/yun-mu/MicroServicePractice/interface-center/out/user"
 	"context"
 	"net/http"
 

@@ -9,11 +9,11 @@ import (
 	"github.com/micro/go-micro/broker"
 	"gopkg.in/mgo.v2"
 
-	"Ethan/MicroServicePractice/config"
-	logPB "Ethan/MicroServicePractice/interface-center/out/log"
-	pb "Ethan/MicroServicePractice/interface-center/out/vessel"
+	"github.com/yun-mu/MicroServicePractice/config"
+	logPB "github.com/yun-mu/MicroServicePractice/interface-center/out/log"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/vessel"
 
-	"Ethan/MicroServicePractice/vessel/model"
+	"github.com/yun-mu/MicroServicePractice/vessel/model"
 )
 
 // 实现微服务的服务端

@@ -79,7 +79,7 @@ func init() {
 	prefixPath := os.Getenv("PrefixPath")
 	if prefixPath == "" {
 		gopath := os.Getenv("GOPATH")
-		prefixPath = gopath + "/src/Ethan/MicroServicePractice/"
+		prefixPath = gopath + "/src/github.com/yun-mu/MicroServicePractice"
 	}
 	yamlFile, err := ioutil.ReadFile(fmt.Sprintf("%s/config/conf-%s.yaml", prefixPath, env))
 	if err != nil {

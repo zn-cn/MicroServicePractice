@@ -5,7 +5,7 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 
-	pb "Ethan/MicroServicePractice/interface-center/out/user"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/user"
 )
 
 type Authable interface {

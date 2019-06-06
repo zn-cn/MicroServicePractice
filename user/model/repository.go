@@ -6,8 +6,8 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 
-	pb "Ethan/MicroServicePractice/interface-center/out/user"
-	"Ethan/MicroServicePractice/user/dao"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/user"
+	"github.com/yun-mu/MicroServicePractice/user/dao"
 )
 
 type Repository interface {

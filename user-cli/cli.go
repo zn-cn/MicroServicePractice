@@ -4,9 +4,9 @@ import (
 	"log"
 	"os"
 
-	"Ethan/MicroServicePractice/common"
-	"Ethan/MicroServicePractice/config"
-	pb "Ethan/MicroServicePractice/interface-center/out/user"
+	"github.com/yun-mu/MicroServicePractice/common"
+	"github.com/yun-mu/MicroServicePractice/config"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/user"
 
 	"context"
 )

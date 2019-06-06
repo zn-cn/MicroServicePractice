@@ -4,8 +4,8 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 
-	pb "Ethan/MicroServicePractice/interface-center/out/vessel"
-	"Ethan/MicroServicePractice/vessel/dao"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/vessel"
+	"github.com/yun-mu/MicroServicePractice/vessel/dao"
 )
 
 const (

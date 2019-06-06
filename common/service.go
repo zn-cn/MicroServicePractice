@@ -16,7 +16,7 @@ package common
 //   ratelimit: uber/ratelimit
 
 import (
-	"Ethan/MicroServicePractice/config"
+	"github.com/yun-mu/MicroServicePractice/config"
 	"log"
 	"os"
 	"time"

@@ -3,10 +3,10 @@ package main
 import (
 	"log"
 
-	"Ethan/MicroServicePractice/common"
-	pb "Ethan/MicroServicePractice/interface-center/out/vessel"
+	"github.com/yun-mu/MicroServicePractice/common"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/vessel"
 
-	"Ethan/MicroServicePractice/vessel/handler"
+	"github.com/yun-mu/MicroServicePractice/vessel/handler"
 
 	"github.com/micro/go-micro"
 )

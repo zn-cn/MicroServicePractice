@@ -1,12 +1,12 @@
 package main
 
 import (
-	"Ethan/MicroServicePractice/api/handler"
-	"Ethan/MicroServicePractice/common"
-	"Ethan/MicroServicePractice/config"
+	"github.com/yun-mu/MicroServicePractice/api/handler"
+	"github.com/yun-mu/MicroServicePractice/common"
+	"github.com/yun-mu/MicroServicePractice/config"
 
-	"Ethan/MicroServicePractice/api/middleware"
-	userPb "Ethan/MicroServicePractice/interface-center/out/user"
+	"github.com/yun-mu/MicroServicePractice/api/middleware"
+	userPb "github.com/yun-mu/MicroServicePractice/interface-center/out/user"
 
 	"log"
 

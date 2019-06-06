@@ -3,15 +3,15 @@ package main
 import (
 	"log"
 
-	"Ethan/MicroServicePractice/common"
-	"Ethan/MicroServicePractice/config"
+	"github.com/yun-mu/MicroServicePractice/common"
+	"github.com/yun-mu/MicroServicePractice/config"
 
 	"github.com/micro/go-micro"
 
-	"Ethan/MicroServicePractice/consignment/handler"
-	pb "Ethan/MicroServicePractice/interface-center/out/consignment"
-	userPb "Ethan/MicroServicePractice/interface-center/out/user"
-	vesselPb "Ethan/MicroServicePractice/interface-center/out/vessel"
+	"github.com/yun-mu/MicroServicePractice/consignment/handler"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/consignment"
+	userPb "github.com/yun-mu/MicroServicePractice/interface-center/out/user"
+	vesselPb "github.com/yun-mu/MicroServicePractice/interface-center/out/vessel"
 )
 
 const service = "consignment"

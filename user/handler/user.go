@@ -13,11 +13,11 @@ import (
 	"golang.org/x/crypto/bcrypt"
 	"gopkg.in/mgo.v2"
 
-	"Ethan/MicroServicePractice/config"
-	logPB "Ethan/MicroServicePractice/interface-center/out/log"
-	pb "Ethan/MicroServicePractice/interface-center/out/user"
+	"github.com/yun-mu/MicroServicePractice/config"
+	logPB "github.com/yun-mu/MicroServicePractice/interface-center/out/log"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/user"
 
-	"Ethan/MicroServicePractice/user/model"
+	"github.com/yun-mu/MicroServicePractice/user/model"
 )
 
 type Handler struct {

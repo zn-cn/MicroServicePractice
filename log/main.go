@@ -5,9 +5,9 @@ import (
 
 	json "github.com/json-iterator/go"
 
-	"Ethan/MicroServicePractice/common"
-	"Ethan/MicroServicePractice/config"
-	pb "Ethan/MicroServicePractice/interface-center/out/log"
+	"github.com/yun-mu/MicroServicePractice/common"
+	"github.com/yun-mu/MicroServicePractice/config"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/log"
 
 	"github.com/micro/go-micro/broker"
 )

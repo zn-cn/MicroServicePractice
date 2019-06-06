@@ -3,7 +3,7 @@ package common
 import (
 	"fmt"
 	"time"
-	"Ethan/MicroServicePractice/config"
+	"github.com/yun-mu/MicroServicePractice/config"
 
 	"gopkg.in/mgo.v2"
 )

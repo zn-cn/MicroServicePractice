@@ -10,13 +10,13 @@ import (
 	"github.com/micro/go-micro/broker"
 	"gopkg.in/mgo.v2"
 
-	logPB "Ethan/MicroServicePractice/interface-center/out/log"
+	logPB "github.com/yun-mu/MicroServicePractice/interface-center/out/log"
 
-	"Ethan/MicroServicePractice/config"
-	"Ethan/MicroServicePractice/consignment/model"
-	pb "Ethan/MicroServicePractice/interface-center/out/consignment"
-	userPb "Ethan/MicroServicePractice/interface-center/out/user"
-	vesselPb "Ethan/MicroServicePractice/interface-center/out/vessel"
+	"github.com/yun-mu/MicroServicePractice/config"
+	"github.com/yun-mu/MicroServicePractice/consignment/model"
+	pb "github.com/yun-mu/MicroServicePractice/interface-center/out/consignment"
+	userPb "github.com/yun-mu/MicroServicePractice/interface-center/out/user"
+	vesselPb "github.com/yun-mu/MicroServicePractice/interface-center/out/vessel"
 )
 
 // 微服务服务端 struct handler 必须实现 protobuf 中定义的 rpc 方法

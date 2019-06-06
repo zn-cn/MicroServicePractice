@@ -1,14 +1,13 @@
 package common
 
 import (
-	"Ethan/MicroServicePractice/config"
-	userPb "Ethan/MicroServicePractice/interface-center/out/user"
+	"github.com/yun-mu/MicroServicePractice/config"
+	userPb "github.com/yun-mu/MicroServicePractice/interface-center/out/user"
 	"context"
 	"errors"
 	"log"
 	"os"
 
-	"github.com/micro/go-micro/client"
 	"github.com/micro/go-micro/metadata"
 	"github.com/micro/go-micro/server"
 )
@@ -19,7 +18,8 @@ var (
 
 func GetUserClient() userPb.UserServiceClient {
 	if userClient == nil {
-		userClient = userPb.NewUserServiceClient(config.GetServiceName("user"), client.DefaultClient)
+		srv := GetMicroClient("user")
+		userClient = userPb.NewUserServiceClient(config.GetServiceName("user"), srv.Client())
 	}
 	return userClient
 }
