@@ -1,0 +1,98 @@
+version: '3.1'
+
+services:
+  zookeeper1:
+    image: zookeeper:3.5
+    ports:
+      - "2181:2181"
+    volumes:
+      - ./zookeeper1:/data
+      - ./zookeeper1-log:/datalog
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zookeeper1:2888:3888 server.2=zookeeper2:2888:3888 server.3=zookeeper3:2888:3888
+
+  zookeeper2:
+    image: zookeeper:3.5
+    ports:
+      - "2181:2181"
+    volumes:
+      - ./zookeeper2:/data
+      - ./zookeeper2-log:/datalog
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zookeeper1:2888:3888 server.2=zookeeper2:2888:3888 server.3=zookeeper3:2888:3888
+
+  zookeeper2:
+    image: zookeeper:3.5
+    ports:
+      - "2181:2181"
+    volumes:
+      - ./zookeeper3:/data
+      - ./zookeeper3-log:/datalog
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zookeeper1:2888:3888 server.2=zookeeper2:2888:3888 server.3=zookeeper3:2888:3888
+
+  kafka:
+    image: wurstmeister/kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 123.56.0.200
+      KAFKA_CREATE_TOPICS: "Ethan.MicroServicePractice:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./kafka:/kafka
+
+  consul1:
+    image: consul:1.5
+    container_name: consul-node1
+    command: agent -server -bootstrap-expect=3 -node=node1 -bind=0.0.0.0 -client=0.0.0.0 -datacenter=dc1
+    volumes:
+      - ./consul/node1:/consul/data
+
+  consul2:
+    image: consul:1.5
+    container_name: consul-node2
+    command: agent -server -bootstrap-expect=3 -node=node2 -bind=0.0.0.0 -client=0.0.0.0 -datacenter=dc1
+    volumes:
+      - ./consul/node2:/consul/data
+
+  consul3:
+    image: consul:1.5
+    container_name: consul-node2
+    command: agent -server -bootstrap-expect=3 -node=node3 -bind=0.0.0.0 -client=0.0.0.0 -datacenter=dc1
+    volumes:
+      - ./consul/node3:/consul/data
+
+  consul-client:
+    image: consul:1.5
+    container_name: consul-client1
+    command: agent -retry-join=consul1 -node=client1 -bind=0.0.0.0 -client=0.0.0.0 -datacenter=dc1 -ui
+    ports:
+      - "8500:8500"
+      - "8600:8600"
+      - "8300:8300"
+    depends_on:
+      - consul2
+      - consul3
+    volumes:
+      - ./consul/client1:/consul/data
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.12
+    container_name: tracing
+    environment:
+      COLLECTOR_ZIPKIN_HTTP_PORT: 9411
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"

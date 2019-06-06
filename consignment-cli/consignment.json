@@ -1,0 +1,21 @@
+{
+  "description": "This is a test consignment",
+  "weight": 55000,
+  "containers": [
+    {
+      "customer_id": "5cf681bf8f37b4757ffcded1",
+      "user_id": "5cf7c408afe05ce7e837f2a4",
+      "origin": "Manchester, United Kingdom"
+    },
+    {
+      "customer_id": "5cf681bf8f37b4757ffcded2",
+      "user_id": "5cf7c408afe05ce7e837f2a4",
+      "origin": "Derby, United Kingdom"
+    },
+    {
+      "customer_id": "5cf681bf8f37b4757ffcded3",
+      "user_id": "5cf7c408afe05ce7e837f2a4",
+      "origin": "Sheffield, United Kingdom"
+    }
+  ]
+}

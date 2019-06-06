@@ -1,0 +1,57 @@
+Env: dev
+ServiceName:
+  consignment: Ethan.MicroServicePractice.consignment
+  user: Ethan.MicroServicePractice.user
+  vessel: Ethan.MicroServicePractice.vessel
+  log: Ethan.MicroServicePractice.log
+  api: Ethan.MicroServicePractice.api
+Version:
+  consignment: latest
+  user: latest
+  vessel: latest
+  log: latest
+  api: latest
+Tracing:
+  consignment: 127.0.0.1:6831
+  user: 127.0.0.1:6831
+  vessel: 127.0.0.1:6831
+  log: 127.0.0.1:6831
+DB:
+  consignment:
+    DriverName: mongodb
+    Host: 127.0.0.1
+    Port: 27017
+  user:
+    DriverName: mongodb
+    Host: 127.0.0.1
+    Port: 27017
+  vessel:
+    DriverName: mongodb
+    Host: 127.0.0.1
+    Port: 27017
+BrokerTopic:
+  log: Ethan.MicroServicePractice.log
+BrokerAddrs:
+  default:
+    - 127.0.0.1:9092
+  consignment:
+    - 127.0.0.1:9092
+  user:
+    - 127.0.0.1:9092
+  vessel:
+    - 127.0.0.1:9092
+  log:
+    - 127.0.0.1:9092
+RegistryAddrs:
+  default:
+    - 127.0.0.1:8500
+  consignment:
+    - 127.0.0.1:8500
+  user:
+    - 127.0.0.1:8500
+  vessel:
+    - 127.0.0.1:8500
+  log:
+    - 127.0.0.1:8500
+  api:
+    - 127.0.0.1:8500

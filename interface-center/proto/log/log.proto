@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package log;
+
+message Log {
+    string origin = 2;
+    string method = 3;
+    string msg = 4;
+}

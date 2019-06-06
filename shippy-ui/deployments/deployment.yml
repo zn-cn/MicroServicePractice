@@ -1,0 +1,24 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui
+  template:
+    metadata:
+      labels:
+        app: ui
+    spec:
+        containers:
+        - name: ui-service
+          image: ewanvalentine/ui:latest
+          imagePullPolicy: Always
+          env:
+          - name: UPDATED_AT
+            value: "Tue 20 Mar 2018 08:26:39 GMT"
+          ports:
+          - containerPort: 80
+            name: ui
